@@ -2,8 +2,6 @@
 
 A browser-only interactive wall chart for the 2026 FIFA World Cup. Works offline, installable as a PWA, and prints to a clean two-column poster for those nostalgic pen \& paper vibes.
 
-\---
-
 ## Features
 
 * **Live countdown** - ticking clock to the next kick-off, right in the header. Flips to a pulsing ● LIVE indicator when a match is in progress
