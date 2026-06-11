@@ -1,4 +1,4 @@
-# World Cup 2026 interactive wallchart
+# [World Cup 2026 interactive wallchart](https://ck-bio.github.io/worldcup-wallchart)
 
 A browser-only interactive wall chart for the 2026 FIFA World Cup. Works offline, installable as a PWA, and prints to a clean two-column poster for those nostalgic pen \& paper vibes.
 
