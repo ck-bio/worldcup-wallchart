@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0e7490" id="theme-meta">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<title>World Cup 2026 Wallchart</title>
+<script>const _t=localStorage.getItem('wc26t');if(_t)document.documentElement.setAttribute('data-theme',_t);</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Score entry modal -->
+<div id="ov" onclick="if(event.target===this)closeModal()">
+  <div id="mb">
+    <div id="mtt"></div>
+    <div id="mst"></div>
+    <div id="mi">
+      <input id="sh" type="number" min="0" max="99" placeholder="–">
+      <span class="dash">–</span>
+      <input id="sa" type="number" min="0" max="99" placeholder="–">
+    </div>
+    <div id="mbtns">
+      <button id="b-clear" onclick="clearScore()">Clear</button>
+      <button id="b-cancel" onclick="closeModal()">Cancel</button>
+      <button id="b-save" onclick="saveScore()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div id="app">
+  <header>
+    <div class="h-title">
+      <span class="h-tag">FIFA World Cup</span>
+      <span class="h-yr">2026</span>
+      <p id="countdown"></p>
+      <p id="sim-ind" class="sim-ind" style="display:none">Simulation mode — scores are not real</p>
+    </div>
+    <div class="h-right">
+      <div class="hbtns">
+        <button class="sim-btn" id="sim-btn" onclick="simulate()" title="Fill all 104 matches with random scores">Simulate</button>
+        <button class="rev-btn" id="rev-btn" onclick="revertSim()" style="display:none" title="Clear simulated scores">Revert</button>
+        <button class="print-btn" onclick="window.print()">Print poster</button>
+        <button class="tbtn" id="tbtn" onclick="toggleTheme()" title="Toggle theme"></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Group Stage (collapsible) -->
+  <div class="sec collapsible" id="grp-hdr" onclick="toggleSection('grp')">
+    Group Stage ▾<span class="arr" id="grp-arr">▾</span>
+  </div>
+  <div id="gg" class="gg"></div>
+
+  <!-- Best third-place tracker (collapsible, hidden when groups complete) -->
+  <div class="sec collapsible" id="t3-sec" onclick="toggleSection('t3')">
+    Best third-place teams ▾<span class="arr" id="t3-arr">▾</span>
+  </div>
+  <div id="t3rd"></div>
+
+  <!-- Round of 32 — collapsible -->
+  <div class="sec collapsible" id="r32-hdr" onclick="toggleSection('r32')">
+    Round of 32 ▾<span class="arr" id="r32-arr">▾</span>
+  </div>
+  <div class="kg" id="r32"></div>
+
+  <!-- R16 → Final — always bracket SVG -->
+  <div class="sec">R16 → Final</div>
+  <div id="ko-bkt"></div>
+</div>
+
+<footer>Click any played match to enter or edit the score · auto-updates every 2 min · scores saved locally</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
