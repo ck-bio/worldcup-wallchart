@@ -16,5 +16,5 @@ A browser-only interactive wall chart for the 2026 FIFA World Cup. Works offline
 
 * Click any match - group stage or knockout - to enter or edit a score manually
 * Manual scores persist across sessions via localStorage and take precedence over API data
-* Simulation mode for playing around, testing, or deciding your next bet
+* Simulation mode for playing around, testing, or leaving your next bet to chance
 
