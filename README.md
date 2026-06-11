@@ -1,8 +1,6 @@
-# World Cup 2026 interactive wallchart
+# [World Cup 2026 interactive wallchart](https://ck-bio.github.io/worldcup-wallchart)
 
 A browser-only interactive wall chart for the 2026 FIFA World Cup. Works offline, installable as a PWA, and prints to a clean two-column poster for those nostalgic pen \& paper vibes.
-
-\---
 
 ## Features
 
@@ -18,5 +16,5 @@ A browser-only interactive wall chart for the 2026 FIFA World Cup. Works offline
 
 * Click any match - group stage or knockout - to enter or edit a score manually
 * Manual scores persist across sessions via localStorage and take precedence over API data
-* Simulation mode for playing around, testing, or deciding your next bet
+* Simulation mode for playing around, testing, or leaving your next bet to chance
 
