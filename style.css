@@ -255,6 +255,7 @@ header {
   display: flex;
   align-items: center;
   gap: 12px;
+  justify-content: center;
 }
 .sec::before {
   content: '';
@@ -270,8 +271,6 @@ header {
   cursor: pointer;
   justify-content: space-between;
   user-select: none;
-  border-left: 2px solid var(--acc);
-  padding-left: 12px;
 }
 .collapsible::before { display: none; }
 .collapsible:hover { opacity: .8; }
@@ -287,6 +286,7 @@ header {
   grid-template-columns: repeat(auto-fill, 210px);
   gap: 8px;
   align-items: start;
+  justify-content: center;
 }
 
 .gc {
@@ -376,7 +376,7 @@ header {
 .st tr.q .tc { color: var(--tx); }
 
 /* ── BEST THIRD-PLACE ── */
-.t3-wrap { overflow-x: auto; margin-bottom: 4px; }
+.t3-wrap { overflow-x: auto; margin: 0 auto 4px; }
 .t3-tbl  { width: 100%; border-collapse: collapse; }
 .t3-tbl th { font-family: 'Outfit', sans-serif; font-size: 8.5px; font-weight: 600; color: var(--t3); text-transform: uppercase; letter-spacing: .08em; padding: 4px 6px 3px; text-align: center; border-bottom: 1px solid var(--bd2); white-space: nowrap; }
 .t3-tbl th:first-child, .t3-tbl th:nth-child(2), .t3-tbl th:nth-child(3) { text-align: left; }
@@ -393,7 +393,7 @@ header {
 /* ══════════════════════════════════════════════════════════════════════════════
    KNOCKOUT GRID (R32)
    ══════════════════════════════════════════════════════════════════════════════ */
-.kg { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 230px)); gap: 8px; }
+.kg { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 230px)); gap: 8px; justify-content: center; }
 .kc { background: var(--card); border: 1px solid var(--bd); border-radius: var(--r); padding: 9px 11px; box-shadow: var(--sh); }
 .kc.next { background: var(--next-bg); border-color: var(--next-bd); }
 .klbl { font-family: 'Syne', sans-serif; font-size: 8.5px; font-weight: 800; color: var(--acc); letter-spacing: .16em; text-transform: uppercase; text-align: center; margin-bottom: 3px; }
@@ -411,7 +411,7 @@ header {
 /* ══════════════════════════════════════════════════════════════════════════════
    BRACKET SVG (R16 → Final)
    ══════════════════════════════════════════════════════════════════════════════ */
-.bkt-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 8px; }
+.bkt-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-top: 8px; display: flex; justify-content: center; }
 .bkt-svg    { display: block; min-width: 760px; width: 100%; height: auto; }
 
 .bkt-svg .bk-bg   { fill: var(--card); stroke: var(--bd2); stroke-width: .5; }
