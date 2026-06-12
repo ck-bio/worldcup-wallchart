@@ -628,32 +628,47 @@ function updateCountdown() {
 }
 
 // ─── SCORE FETCH ──────────────────────────────────────────────────────────────
+const NAME_TO_CODE = {
+  'Mexico':'MEX','South Africa':'RSA','South Korea':'KOR','Czech Republic':'CZE',
+  'Canada':'CAN','Bosnia & Herzegovina':'BIH','Qatar':'QAT','Switzerland':'SUI',
+  'Brazil':'BRA','Morocco':'MAR','Haiti':'HAI','Scotland':'SCO',
+  'USA':'USA','Paraguay':'PAR','Australia':'AUS','Turkey':'TUR',
+  'Germany':'GER','Curaçao':'CUW','Ivory Coast':'CIV','Ecuador':'ECU',
+  'Netherlands':'NED','Japan':'JPN','Sweden':'SWE','Tunisia':'TUN',
+  'Belgium':'BEL','Egypt':'EGY','Iran':'IRN','New Zealand':'NZL',
+  'Spain':'ESP','Cape Verde':'CPV','Saudi Arabia':'KSA','Uruguay':'URU',
+  'France':'FRA','Senegal':'SEN','Iraq':'IRQ','Norway':'NOR',
+  'Argentina':'ARG','Algeria':'ALG','Austria':'AUT','Jordan':'JOR',
+  'Portugal':'POR','DR Congo':'COD','Uzbekistan':'UZB','Colombia':'COL',
+  'England':'ENG','Croatia':'CRO','Ghana':'GHA','Panama':'PAN',
+};
+// Build (homeCode+awayCode) → match id lookup from group stage fixtures
+const PAIR_TO_ID = {};
+GM.forEach(m => { PAIR_TO_ID[m.h + '|' + m.a] = m.id; });
+
 async function fetchScores() {
-  const urls = [
-    'https://worldcup2026api.fly.dev/api/v1/matches',
-    'https://worldcup2026-api.onrender.com/api/matches',
-  ];
-  for (const url of urls) {
-    try {
-      const res = await fetch(url, { signal: AbortSignal.timeout(5000) });
-      if (!res.ok) continue;
-      const j = await res.json();
-      const arr = j.data || j.matches || j || [];
-      if (!Array.isArray(arr)) continue;
-      let hit = false;
-      arr.forEach(m => {
-        const id = m.id || m.match_id;
-        const h  = m.score1 ?? m.home_score ?? m.homeScore ?? m.goals_home;
-        const a  = m.score2 ?? m.away_score ?? m.awayScore ?? m.goals_away;
-        if (id && h != null && a != null) { apiSc[id] = { h, a }; hit = true; }
-      });
-      if (hit) {
-        render();
-        // score timestamp available via API data (meta element removed)
-      }
-      break;
-    } catch (_) {}
-  }
+  try {
+    const res = await fetch(
+      'https://raw.githubusercontent.com/openfootball/worldcup.json/master/2026/worldcup.json',
+      { signal: AbortSignal.timeout(8000) }
+    );
+    if (!res.ok) return;
+    const j = await res.json();
+    const arr = j.matches || [];
+    let hit = false;
+    arr.forEach(m => {
+      if (!m.score) return;
+      const hc = NAME_TO_CODE[m.team1];
+      const ac = NAME_TO_CODE[m.team2];
+      if (!hc || !ac) return;
+      const id = PAIR_TO_ID[hc + '|' + ac];
+      if (!id) return;
+      const [h, a] = m.score.ft;
+      apiSc[id] = { h, a };
+      hit = true;
+    });
+    if (hit) render();
+  } catch (_) {}
 }
 
 // ─── THEME ────────────────────────────────────────────────────────────────────
