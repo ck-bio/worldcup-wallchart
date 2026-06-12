@@ -274,6 +274,7 @@ header {
 }
 .collapsible::before { display: none; }
 .collapsible:hover { opacity: .8; }
+#bkt-sec::before { display: none; }
 .arr { font-size: 11px; opacity: .5; }
 
 
@@ -476,7 +477,10 @@ footer { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(-
   }
   body { background: #fff !important; background-image: none !important; color: #000 !important; padding: 8mm; max-width: none; font-size: 9pt; }
   .tbtn, .print-btn, .sim-btn, .rev-btn, #countdown,
-  #t3-sec, #t3rd, #ko-bkt, footer, #ov, .sim-ind { display: none !important; }
+  #t3-sec, #t3rd, footer, #ov, .sim-ind { display: none !important; }
+  #ko-bkt { display: block !important; page-break-before: always; }
+  .bkt-scroll { overflow: visible !important; justify-content: flex-start; }
+  .bkt-svg { min-width: 0 !important; width: 100% !important; }
   header { border-bottom: 1pt solid #000; padding: 0 0 4mm; margin-bottom: 5mm; }
   .h-yr { font-size: 36pt; letter-spacing: -1px; }
   .h-tag { font-size: 9pt; }
@@ -484,6 +488,7 @@ footer { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: var(-
   .sec { font-size: 8pt; padding: 4mm 0 2mm; color: #000; page-break-after: avoid; }
   .sec::before { background: #000; }
   .collapsible::before { display: none; }
+  #bkt-sec::before { display: none; }
   .gg { grid-template-columns: repeat(2, 1fr) !important; gap: 4mm !important; }
   .gc { border: .5pt solid #bbb !important; background: #fff !important; page-break-inside: avoid; }
   .gh { color: #fff !important; padding: 4pt 8pt; font-size: 7.5pt; }

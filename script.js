@@ -524,7 +524,7 @@ function renderBracket() {
   ];
 
   let inner = '';
-  // connector lines removed
+  paths.forEach(d => { inner += `<path class="bk-conn" d="${d}"/>`; });
   LAYOUT.forEach(([id, col, yc]) => { inner += svgCard(id, C[col], yc, tMap); });
 
   // Round column labels
