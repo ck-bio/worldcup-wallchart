@@ -275,6 +275,7 @@ header {
 .collapsible::before { display: none; }
 .collapsible:hover { opacity: .8; }
 #bkt-sec::before { display: none; }
+#bkt-sec { justify-content: flex-start; }
 .arr { font-size: 11px; opacity: .5; }
 
 
